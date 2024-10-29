@@ -1,6 +1,6 @@
 package com.samir.erpSystem.entity;
 
-import jakarta.persistence.*;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import javax.persistence.*;
 import java.sql.Date;
 
 @Table(name = "user")
