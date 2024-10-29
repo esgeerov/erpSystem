@@ -14,14 +14,13 @@ import org.springframework.stereotype.Service;
 public class MyUserDetailsService implements UserDetailsService {
     private final UsersRepository usersReposirtory;
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user=usersReposirtory.findUsersByEmailAndActive(username, EnumAviable.ACTIVE.value);
-        if (user==null){
-            throw   new UsernameNotFoundException("Not found "+ username);
+        Users user = usersReposirtory.findUsersByEmailAndActive(username, EnumAviable.ACTIVE.value);
+        if (user == null) {
+            throw new UsernameNotFoundException("Not found " + username);
         }
-        MyUserDetails myUserDetails=new MyUserDetails(user);
+        MyUserDetails myUserDetails = new MyUserDetails(user);
 
         return myUserDetails;
     }

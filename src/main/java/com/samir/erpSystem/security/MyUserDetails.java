@@ -1,5 +1,7 @@
 package com.samir.erpSystem.security;
 
+
+
 import com.samir.erpSystem.entity.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,16 +12,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MyUserDetails implements UserDetails {
+public class MyUserDetails  implements UserDetails {
     private String email;
     private String password;
     private Integer active;
     private List<GrantedAuthority> authorities;
-    public MyUserDetails(Users users) {
-        this.email = users.getEmail();
-        this.password = users.getPassword();
-        this.active = users.getActive();
-        this.authorities = Arrays.stream(users.getRole().split(","))
+
+
+    public MyUserDetails(Users users){
+        this.email=users.getEmail();
+        this.password=users.getPassword();
+        this.active= users.getActive();
+        this.authorities= Arrays.stream(users.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
@@ -41,21 +45,21 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
