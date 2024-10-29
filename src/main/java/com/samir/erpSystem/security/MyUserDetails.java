@@ -26,17 +26,17 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return this.authorities;
     }
 
     @Override
     public String getPassword() {
-        return "";
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        return this.email;
     }
 
     @Override
